@@ -2,6 +2,7 @@ import 'package:elharam_elrabe3/common_component/widgets/app_button.dart';
 import 'package:elharam_elrabe3/common_component/widgets/app_input.dart';
 import 'package:elharam_elrabe3/common_component/widgets/app_text.dart';
 import 'package:elharam_elrabe3/constant.dart';
+import 'package:elharam_elrabe3/features/home/view.dart';
 import 'package:elharam_elrabe3/gen/fonts.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,17 +23,24 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(leading: IconButton(
-        icon: Padding(
-          padding:  EdgeInsetsDirectional.only(start: 25.w,),
-          child:  ImageIcon(color: Colors.black,size: 17.sp,
-            const AssetImage(
-              'assets/images/icon_forword.png',
+      appBar: CustomAppBar(
+        leading: IconButton(
+          icon: Padding(
+            padding: EdgeInsetsDirectional.only(
+              start: 25.w,
+            ),
+            child: ImageIcon(
+              color: Colors.black,
+              size: 17.sp,
+              const AssetImage(
+                'assets/images/icon_forword.png',
+              ),
             ),
           ),
+          onPressed: () {},
         ),
-        onPressed: () {},
-      ),title: 'Login',),
+        title: 'Login',
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsetsDirectional.only(top: 8.h, start: 24.w, end: 24.w),
@@ -48,23 +56,31 @@ class _LogInScreenState extends State<LogInScreen> {
                   image: 'assets/images/login_logo.png',
                   imageWidth: 255.56.h,
                 ),
-                const AppInput(label: 'Email address',),
+                const AppInput(
+                  label: 'Email address',
+                ),
                 AppInput(
                   label: 'Password',
                   top: 20.h,
                   bottom: 20.h,
                 ),
                 AppText(
-                  text: 'Forgot Password ?',
-                      size: 15.sp,
-                      fontFamily: FontFamily.medium,
-                      color: textBlackColor),
+                    text: 'Forgot Password ?',
+                    size: 15.sp,
+                    fontFamily: FontFamily.medium,
+                    color: textBlackColor),
                 AppButton(
+                  onTap: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return const HomeScreen();
+                    }));
+                  },
                   component: AppText(
-                   text: 'Login',
-                        color: Colors.white,
-                        size: 18.sp,
-                        fontFamily: FontFamily.semiBold),
+                      text: 'Login',
+                      color: Colors.white,
+                      size: 18.sp,
+                      fontFamily: FontFamily.semiBold),
                   top: 20.h,
                   bottom: 134.h,
                 ),
